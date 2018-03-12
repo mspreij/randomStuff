@@ -1,0 +1,70 @@
+# listings and stuff
+alias ll="ls -la"
+alias l="ls -l"
+# more cd'ing
+alias cd..="cd .."
+alias ..="cd .."
+alias cd-="cd -"
+alias -- -="cd -"
+# list 10 most recently modified
+function lt() { ls -lAt "$@" | head -n11 | tail; }
+# change dir & list
+function cdl() { cd "$1"; ls -la; }
+
+# bookmarks
+# alias www="cd /var/www"
+alias www="cd /Library/WebServer/Documents"
+
+# network
+alias foo="ssh foo@foo -p1234"
+
+# Giiiiiiiiiiit
+alias gs="git status"
+alias g="git status"
+alias gc="git checkout"
+alias gss="git status -s"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias glp='git log -p'
+alias glc="git show --name-status"
+alias glh="gl | head"
+alias gd="git diff"
+alias gdw="git diff -w"
+alias gdc="git diff --cached"
+alias gb="git branch"
+alias pull="git pull"
+alias push="git push"
+alias gsl="git stash list"
+alias gsp="git stash pop"
+
+# alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+
+# makes micro work inside a screen session/window
+alias micro='TERM=xterm-256color micro'
+
+# fun stuff (OS X)
+alias ssbg="arch -i386 /System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background &"
+alias ssbgs="killall ScreenSaverEngine"
+
+# Utilities
+alias ce="crontab -e"
+alias tu="top -u"
+alias igrep="grep -i"
+alias na="nano ~/aliases"
+# alias msql="sudo launchctl load -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist"
+alias path='PS1="[\u@\h \w] "'
+alias tm="mate"
+function f {                   # simple find
+    if [[ "$1" = '' ]]; then
+        echo '  Finds files in current (sub)directory containing given substring. Usage: $ f <substring>'
+        echo "  Implemented as: $ find . -iname *\$1* -not -path './.git/*' | cut -b 3-;"
+        return;
+    fi
+    find . -iname *$1* -not -path './.git/*' | cut -b 3-;
+}
+
+# reboot required?
+alias rr="l /var/run/reboot-required"
+# restart nginx
+alias ser='service nginx reload'
+
+PATH="$PATH:~/bin"
